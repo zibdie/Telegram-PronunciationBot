@@ -69,6 +69,20 @@ Or if you are using the Heroku CLI, run this:
 heroku buildpacks:add https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
 ```
 
+### Local
+
+If you have Python 3 installed (with pip) & ffmpeg installed (or the binary in the same directory as the repo), you can run the bot locally (after you set up your variables in the .env file)
+
+Install the requirements:
+```
+python -m pip install --no-cache-dir -r requirements.txt
+```
+
+Run the bot
+```
+python ./bot.py
+```
+
 ## Screenshots
 ![](demo-screenshot.jpg)
 
