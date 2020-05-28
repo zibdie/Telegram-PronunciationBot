@@ -47,7 +47,7 @@ Webhooks allows you to specify a server Telegram should POST to for your bot to 
 
 ### Docker
 
-If you have Docker installed, Docker is the easiest way to run a copy of this bot. The Dockerfile is set up to install all dependancies and run on boot. It uses the official [python:buster](https://hub.docker.com/_/python) image.
+If you have Docker installed, Docker is the easiest way to run a copy of this bot. The Dockerfile is set up to install all dependancies and run on boot. It uses the official [python:alpine](https://hub.docker.com/_/python) image for continous support and minimal size.
 
 Simply clone a copy of this repo , add your settings to the .env-sample file, rename the .env-sample to .env, open up a command prompt & navigate where this repo (with the Dockerfile) is stored and then run this command:
 
