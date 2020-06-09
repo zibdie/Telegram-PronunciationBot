@@ -6,7 +6,7 @@ A python bot that utilizes the Telegram API to allow users to send text to be co
 
 * Python 3
 * [ffmpeg](https://www.ffmpeg.org/download.html) (for version of audio files to compatible formats)
-* Varius Python Dependancies (can be easily installed from the requirements.txt)
+* Various Python Dependancies (can be easily installed from the requirements.txt)
 
 ## Configuration
 
