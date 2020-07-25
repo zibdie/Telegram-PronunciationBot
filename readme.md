@@ -52,7 +52,8 @@ If you have Docker installed, Docker is the easiest way to run a copy of this bo
 Simply clone a copy of this repo , add your settings to the .env-sample file, rename the .env-sample to .env, open up a command prompt & navigate where this repo (with the Dockerfile) is stored and then run this command:
 
 ```
-docker build -t mypronounciationbot . && docker container run mypronounciationbot
+> docker build -t mypronounciationbot .
+> docker container run mypronounciationbot
 ```
 
 ### Heroku
@@ -69,7 +70,7 @@ Or if you are using the Heroku CLI, run this:
 heroku buildpacks:add https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
 ```
 
-### Local
+### Locally
 
 If you have Python 3 installed (with pip) & ffmpeg installed (or the binary in the same directory as the repo), you can run the bot locally (after you set up your variables in the .env file)
 
