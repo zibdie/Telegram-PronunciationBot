@@ -11,4 +11,4 @@ RUN chmod -R 777 /usr/src/app
 
 EXPOSE $PORT
 
-CMD [ "python", "./server.py" ]
+CMD [ "python", "./bot.py" ]
