@@ -23,6 +23,8 @@ TOKEN = os.getenv("TELEGRAM_TOKEN")
 PORT = int(os.getenv('PORT'))
 WEBHOOK = os.getenv("WEBHOOK_URL_MAIN")
 BOTNAME = os.getenv("BOT_NAME")
+MODE = os.getenv("MODE")
+
 
 updater = Updater(TOKEN, use_context=True)
 dispatcher = updater.dispatcher
@@ -107,12 +109,12 @@ dispatcher.add_handler(text_to_audio_tg_handler)
 dispatcher.add_handler(audio_to_text_tg_handler)
 
 #Main Code Here:
-if os.getenv("TELEGRAM_TOKEN") == "" or not os.getenv("TELEGRAM_TOKEN"):
+if TOKEN == "" or not TOKEN:
     sys.exit("No Telegram Bot Token found in .env! Exiting...")
-elif os.getenv("BOT_NAME") == "" or not os.getenv("BOT_NAME"):
+elif BOTNAME == "" or not BOTNAME:
     sys.exit("Please set your bot's name in the .env file before starting! Now Exiting...")
-elif os.getenv("MODE") == "server":
-    if os.getenv("WEBHOOK_URL_MAIN") == "" or not os.getenv("WEBHOOK_URL_MAIN"):
+elif MODE == "server":
+    if WEBHOOK == "" or not WEBHOOK:
         sys.exit("No Webhook URL found in .env! Exiting...")
     else:
         print("Attempting to listen on port {}".format(PORT))
@@ -122,7 +124,7 @@ elif os.getenv("MODE") == "server":
         print("Setting Webhook URL to {} \n".format(WEBHOOK_URL))
         updater.bot.set_webhook(WEBHOOK_URL)
         print("{} is running on server mode under port {} with the webhook URL set too {} ... \n".format(BOTNAME, PORT, WEBHOOK_URL))
-elif os.getenv("MODE") == "local":
+elif MODE == "local":
     updater.start_polling()
     print("{} is running on local mode ... \n".format(BOTNAME))
 updater.idle()
