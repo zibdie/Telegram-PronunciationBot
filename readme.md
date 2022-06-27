@@ -6,9 +6,9 @@ A python bot that utilizes the Telegram API to allow users to send text to be co
 
 ## Requirements
 
-* Python 3
-* [ffmpeg](https://www.ffmpeg.org/download.html) (for version of audio files to compatible formats)
-* Various Python Dependancies (can be easily installed from the requirements.txt)
+* Python 3+ [Tested on Python 3.8, you may have issues on older Python versions]
+* [ffmpeg](https://www.ffmpeg.org/download.html) (to convert audio files to compatible formats)
+* Various Python Dependancies (can be easily installed from requirements.txt)
 
 ## Configuration
 
@@ -25,10 +25,12 @@ The .env-sample file is a copy of what the bot expects in a .env file and is qui
 
 ```
 TELEGRAM_TOKEN="<Token goes here>"
-MODE="local" (Explained below in the README)
+MODE="local"
 WEBHOOK_URL_MAIN="<Webhook URL Here>"
 BOT_NAME="@<Bot Name Here>"
 PORT=8443
+DEBUG_USER="<user id>"
+LOG="false"
 ```
 
 ### Local/Server Mode
@@ -76,7 +78,7 @@ heroku buildpacks:add https://github.com/jonathanong/heroku-buildpack-ffmpeg-lat
 
 If you have Python 3 installed (with pip) & ffmpeg installed (or the binary in the same directory as the repo), you can run the bot locally (after you set up your variables in the .env file)
 
-Install the requirements:
+Install the requirements (preferably in a Python environment):
 ```
 python -m pip install --no-cache-dir -r requirements.txt
 ```
