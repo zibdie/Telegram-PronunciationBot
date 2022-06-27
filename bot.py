@@ -152,24 +152,24 @@ audio_to_text_tg_handler = MessageHandler(Filters.voice, audio_to_text_tg)
 dispatcher.add_handler(text_to_audio_tg_handler)
 dispatcher.add_handler(audio_to_text_tg_handler)
 
-#Main Code Here:
-if TOKEN == "" or not TOKEN:
-    sys.exit("No Telegram Bot Token found in .env! Exiting...")
-elif BOTNAME == "" or not BOTNAME:
-    sys.exit("Please set your bot's name in the .env file before starting! Now Exiting...")
-elif MODE == "server":
-    if WEBHOOK == "" or not WEBHOOK:
-        sys.exit("No Webhook URL found in .env! Exiting...")
-    else:
-        print("Attempting to listen on port {}".format(PORT))
-        updater.start_webhook(listen="0.0.0.0",
-                            #port=PORT,
-                            url_path=TOKEN)
-        print("Setting Webhook URL to {} \n".format(WEBHOOK_URL))
-        updater.bot.set_webhook(WEBHOOK_URL)
-        print("{} is running on server mode under port {} with the webhook URL set too {} ... \n".format(BOTNAME, PORT, WEBHOOK_URL))
-elif MODE == "local":
-    print(f"LOGGING: {LOG}")
-    updater.start_polling()
-    print("{} is running on local mode ... \n".format(BOTNAME))
-updater.idle()
+if __name__ == "__main__":
+    #Main Code Here:
+    if os.getenv("TELEGRAM_TOKEN") == "" or not os.getenv("TELEGRAM_TOKEN"):
+        sys.exit("No Telegram Bot Token found in .env! Exiting...")
+    elif os.getenv("BOT_NAME") == "" or not os.getenv("BOT_NAME"):
+        sys.exit("Please set your bot's name in the .env file before starting! Now Exiting...")
+    elif os.getenv("MODE") == "server":
+        if os.getenv("WEBHOOK_URL_MAIN") == "" or not os.getenv("WEBHOOK_URL_MAIN"):
+            sys.exit("No Webhook URL found in .env! Exiting...")
+        else:
+            print(f"Attempting to listen on port {PORT}")
+            updater.start_webhook(listen="0.0.0.0",
+                                port=int(PORT),
+                                url_path=TOKEN,
+                                webhook_url=WEBHOOK_URL)
+            #updater.bot.set_webhook(WEBHOOK_URL)
+            print(f"{BOTNAME} is running on server mode under port {PORT} with the webhook URL set too {WEBHOOK_URL}")
+    elif os.getenv("MODE") == "local":
+        updater.start_polling()
+        print(f"{BOTNAME} is running on local mode ... \n")
+    updater.idle()
