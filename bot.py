@@ -20,7 +20,6 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(leve
 TOKEN = os.getenv("TELEGRAM_TOKEN")
 PORT = int(os.getenv('PORT'))
 WEBHOOK = os.getenv("WEBHOOK_URL_MAIN")
-BOTNAME = os.getenv("BOT_NAME")
 MODE = os.getenv("MODE")
 DEBUG_USER=os.getenv("DEBUG_USER")
 LOG= bool(os.getenv("LOG"))
@@ -73,9 +72,9 @@ def debugLogger(context,fname, lname, uname, uid,  action, message=None, file=No
 
 #Add Start Context
 def start(update, context):
-    context.bot.send_message(chat_id=update.message.chat_id, text= "*Hey! Send me a text message ✉️ and I will turn it into an audio clip 🎧*",  parse_mode=ParseMode.MARKDOWN)
+    context.bot.send_message(chat_id=update.message.chat_id, text= f"*Hey, Im @{context.bot.username}! Send me a text message ✉️ and I will turn it into an audio clip 🎧*",  parse_mode=ParseMode.MARKDOWN)
     context.bot.send_message(chat_id=update.message.chat_id, text= "*Otherwise, send me a voice clip 🎤 and I will get it in text form 📜 *",  parse_mode=ParseMode.MARKDOWN)
-    if LOG == True:
+    if LOG:
         debugLogger(context, fname=str(update.message.from_user.first_name), lname=str(update.message.from_user.last_name), uname=str(update.message.from_user.username), uid=str(update.message.from_user.id), action="START")
 
 from telegram.ext import CommandHandler
@@ -85,7 +84,7 @@ dispatcher.add_handler(start_handler)
 
 def text_to_audio_tg(update, context):
     try:
-        context.bot.send_message(chat_id=update.message.chat_id, text="*Getting Audio Recording For:* " + update.message.text, parse_mode=ParseMode.MARKDOWN)
+        context.bot.send_message(chat_id=update.message.chat_id, text=f"*Getting Audio Recording For:* {update.message.text}", parse_mode=ParseMode.MARKDOWN)
         context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
         filename = randomString() + '.mp3'
         tts = gtts.gTTS(update.message.text)
@@ -94,9 +93,9 @@ def text_to_audio_tg(update, context):
         context.bot.send_audio(
         chat_id=update.message.chat_id, 
         audio=open(filename, 'rb'),
-        performer=BOTNAME,
+        performer=f"@{context.bot.username}",
         title=update.message.text,
-        caption="*Pronouncation for: *" + update.message.text,
+        caption=f"*Pronouncation for: * {update.message.text}",
         parse_mode=ParseMode.MARKDOWN
         )
 
@@ -156,8 +155,6 @@ if __name__ == "__main__":
     #Main Code Here:
     if os.getenv("TELEGRAM_TOKEN") == "" or not os.getenv("TELEGRAM_TOKEN"):
         sys.exit("No Telegram Bot Token found in .env! Exiting...")
-    elif os.getenv("BOT_NAME") == "" or not os.getenv("BOT_NAME"):
-        sys.exit("Please set your bot's name in the .env file before starting! Now Exiting...")
     elif os.getenv("MODE") == "server":
         if os.getenv("WEBHOOK_URL_MAIN") == "" or not os.getenv("WEBHOOK_URL_MAIN"):
             sys.exit("No Webhook URL found in .env! Exiting...")
@@ -168,8 +165,8 @@ if __name__ == "__main__":
                                 url_path=TOKEN,
                                 webhook_url=WEBHOOK_URL)
             #updater.bot.set_webhook(WEBHOOK_URL)
-            print(f"{BOTNAME} is running on server mode under port {PORT} with the webhook URL set too {WEBHOOK_URL}")
+            print(f"Bot is running on server mode under port {PORT} with the webhook URL set too {WEBHOOK_URL}")
     elif os.getenv("MODE") == "local":
         updater.start_polling()
-        print(f"{BOTNAME} is running on local mode ... \n")
+        print(f"Bot is running on local mode ... \n")
     updater.idle()
