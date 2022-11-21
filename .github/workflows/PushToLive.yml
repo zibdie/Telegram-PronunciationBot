@@ -14,7 +14,6 @@ jobs:
         run: git config --unset-all http.https://github.com/.extraheader
       - name: Write to secrets
         run: |
-          export $(xargs < .env)
           sudo mv ./.github/workflows/PushToLive.yml ./.github/workflows/PushToLive.yml.ignore
           sudo rm -rf ./.git
           sed -i -e "/.env/d" ./.gitignore
@@ -24,7 +23,6 @@ jobs:
           echo 'WEBHOOK_URL_MAIN=${{ secrets.WEBHOOK_URL_MAIN}}' >> .env
           echo 'DEBUG_USER=${{ secrets.DEBUG_USER}}' >> .env
           echo 'LOG=${{ secrets.LOG}}' >> .env
-          echo 'FLY_API_TOKEN=${{ secrets.FLY_API_TOKEN}}' >> .env
       - name: Pushes to another repository
         uses: cpina/github-action-push-to-another-repository@main
         env:
