@@ -56,8 +56,8 @@ If you have Docker installed, Docker is the easiest way to run a copy of this bo
 Simply clone a copy of this repo , add your settings to the .env-sample file, rename the .env-sample to .env, open up a command prompt & navigate where this repo (with the Dockerfile) is stored and then run this command:
 
 ```
-> docker build -t mypronounciationbot .
-> docker container run mypronounciationbot
+> docker build -t pronounciationbot .
+> docker container run pronounciationbot
 ```
 
 ### Docker Hub
@@ -66,6 +66,8 @@ You can now clone this image from DockerHub directly
 ```
 docker pull zibdie/telegram-pronounciationbot
 ```
+
+You can visit the DockerHub page here: https://hub.docker.com/repository/docker/zibdie/telegram-pronounciationbot
 
 ### Heroku
 The 'Procfile' is there if you wish to deploy to Heroku or another service that supports Procfiles. Simply clone a copy of this repo, add your settings to the .env-sample file, rename the .env-sample to .env, and deploy to Heroku
@@ -100,6 +102,6 @@ python ./bot.py
 
 ## See It Live!
 
-Got a Telegram Account? See it live! https://redirct.page.link/TelegramPronounciationBotLivePage
+Got a Telegram Account? See it live! https://t.me/PronounciationBot_bot
 
-[![](https://i.imgur.com/7NOWvZr.png)](https://redirct.page.link/TelegramPronounciationBotLivePage)
+[![](https://i.imgur.com/7NOWvZr.png)](https://t.me/PronounciationBot_bot)
