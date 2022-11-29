@@ -60,6 +60,13 @@ Simply clone a copy of this repo , add your settings to the .env-sample file, re
 > docker container run mypronounciationbot
 ```
 
+### Docker Hub
+
+You can now clone this image from DockerHub directly
+```
+docker pull zibdie/telegram-pronounciationbot
+```
+
 ### Heroku
 The 'Procfile' is there if you wish to deploy to Heroku or another service that supports Procfiles. Simply clone a copy of this repo, add your settings to the .env-sample file, rename the .env-sample to .env, and deploy to Heroku
 
