@@ -2,6 +2,8 @@
 
 # Pronounce It Bot
 
+[https://github.com/zibdie/Telegram-PronounciationBot](https://github.com/zibdie/Telegram-PronounciationBot)
+
 A python bot that utilizes the Telegram API to allow users to send text to be converted to audio and audio clips turning into text.
 
 ## Requirements
