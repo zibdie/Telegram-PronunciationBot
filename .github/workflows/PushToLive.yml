@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       # Based on: https://github.com/cpina/github-action-push-to-another-repository/issues/75
       - name: Run small fix
         run: git config --unset-all http.https://github.com/.extraheader
