@@ -1,8 +1,8 @@
-![Telegram Pronounciation Bot Logo](https://i.imgur.com/6qpwmbQ.png)
+![Telegram Pronunciation Bot Logo](https://i.imgur.com/6qpwmbQ.png)
 
-# Pronounce It Bot
+# Pronunciation Bot
 
-[https://github.com/zibdie/Telegram-PronounciationBot](https://github.com/zibdie/Telegram-PronounciationBot)
+https://github.com/zibdie/Telegram-PronunciationBot
 
 A python bot that utilizes the Telegram API to allow users to send text to be converted to audio and audio clips turning into text.
 
@@ -58,25 +58,25 @@ If you have Docker installed, Docker is the easiest way to run a copy of this bo
 Simply clone a copy of this repo , add your settings to the .env-sample file, rename the .env-sample to .env, open up a command prompt & navigate where this repo (with the Dockerfile) is stored and then run this command:
 
 ```
-> docker build -t pronounciationbot .
-> docker container run pronounciationbot
+> docker build -t pronunciationbot .
+> docker container run pronunciationbot
 ```
 
 ### Docker Hub
 
 You can now clone this image from DockerHub directly
 ```
-docker pull zibdie/telegram-pronounciationbot
+docker pull zibdie/telegram-pronunciationbot
 ```
 
-You can visit the DockerHub page here: [https://hub.docker.com/repository/docker/zibdie/telegram-pronounciationbot](https://hub.docker.com/r/zibdie/telegram-pronounciationbot)
+You can visit the DockerHub page here: [https://hub.docker.com/repository/docker/zibdie/telegram-pronunciationbot](https://hub.docker.com/r/zibdie/telegram-pronunciationbot)
 
 ### Heroku
-The 'Procfile' is there if you wish to deploy to Heroku or another service that supports Procfiles. Simply clone a copy of this repo, add your settings to the .env-sample file, rename the .env-sample to .env, and deploy to Heroku
+The `Procfile` is there if you wish to deploy to Heroku or another service that supports Procfiles. Simply clone a copy of this repo, add your settings to the `.env-sample` file, rename the .env-sample to `.env`, and deploy to Heroku
 
-*Tip:* Assuming you want to run in server mode, create your dyno first to get your Dyno URL, then add that to .env file and deploy. 
+**Tip:** Assuming you want to run in server mode, create your dyno first to get your Dyno URL, then add that to .env file and deploy. 
 
-*Tip 2:* When deploying to Heroku, remember to add this buildpack in the Settings page. Otherwise, ffmpeg will not be able to convert the audio clips when a user sends a voice clip to transcribe:
+**Tip 2:** When deploying to Heroku, remember to add the `ffmpeg` buildpack in the Settings page. Otherwise, ffmpeg will not be able to convert the audio clips when a user sends a voice clip to transcribe:
 ```
 https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
 ```
@@ -87,7 +87,7 @@ heroku buildpacks:add https://github.com/jonathanong/heroku-buildpack-ffmpeg-lat
 
 ### Locally
 
-If you have Python 3 installed (with pip) & ffmpeg installed (or the binary in the same directory as the repo), you can run the bot locally (after you set up your variables in the .env file)
+If you have Python 3(.8+) installed (with pip) & ffmpeg installed (or the binary in the same directory as the repo), you can run the bot locally (after you set up your variables in the .env file)
 
 Install the requirements (preferably in a Python environment):
 ```
