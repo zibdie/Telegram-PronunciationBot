@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           platforms: linux/amd64,linux/arm64,linux/arm
-          file: ${{ env.GITHUB_WORKSPACE }}/Dockerfile
+          file: ${{ github.workspace }}/Dockerfile
           push: true
           tags: ${{ env.OFFICIAL_TAG }}
       - name: Update repo description
